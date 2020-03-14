@@ -1,3 +1,4 @@
+import { origin } from "../models/origin";
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Header, Icon, List, Container } from "semantic-ui-react";
@@ -15,12 +16,9 @@ const App = () => {
     setSelectedActivity(activities.filter(a => a.id === id)[0]);
   };
   useEffect(() => {
-    /* axios.
-          get<IActivity[]>('http://localhost:5000/api/activities')
-          .then((response) => {
-          setActivities(response.data)
-       })
-    */
+    axios.get<IActivity[]>(`${origin}/api/activities`).then(response => {
+      setActivities(response.data);
+    });
   }, []);
 
   return (
