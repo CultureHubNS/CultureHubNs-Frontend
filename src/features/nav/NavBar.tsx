@@ -1,26 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Menu, Container, Button } from "semantic-ui-react";
-import ActivityStore from '../../app/stores/activityStore';
 import { observer } from "mobx-react-lite";
-
-
+import { NavLink } from "react-router-dom";
 
 const NavBar: React.FC = () => {
-  const activityStore = useContext(ActivityStore);
   return (
     <Menu fixed="top" inverted>
       <Container>
-        <Menu.Item header>
+        <Menu.Item header as={NavLink} exact to="/">
           <img src="/assets/logo.png" alt="logo" style={{ marginRight: 10 }} />
           Culture Hub NS
         </Menu.Item>
-        <Menu.Item name="Events" />
+        <Menu.Item name="Events" as={NavLink} to="/events" />
         <Menu.Item>
-          <Button onClick={activityStore.openCreateForm} positive content="Create event" />
+          <Button
+            as={NavLink}
+            to="/createEvent"
+            positive
+            content="Create event"
+          />
         </Menu.Item>
       </Container>
     </Menu>
   );
 };
 
-export default observer (NavBar);
+export default observer(NavBar);
