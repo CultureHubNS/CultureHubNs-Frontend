@@ -1,22 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./app/layout/styles.css";
 import App from "./app/layout/App";
 import * as serviceWorker from "./serviceWorker";
 import { makeServer } from "./makeServer";
 import ScrollToTop from "./app/layout/ScrollToTop";
 
+export const history = createBrowserHistory();
+
 if (process.env.REACT_APP_MOCK_SERVER) {
   makeServer();
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={history}>
     <ScrollToTop>
       <App />
     </ScrollToTop>
-  </BrowserRouter>,
+  </Router>,
   document.getElementById("root")
 );
 
