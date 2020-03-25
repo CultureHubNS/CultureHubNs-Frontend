@@ -7,7 +7,6 @@ import 'react-widgets/dist/css/react-widgets.css';
 import "./app/layout/styles.css";
 import App from "./app/layout/App";
 import * as serviceWorker from "./serviceWorker";
-import { makeServer } from "./makeServer";
 import ScrollToTop from "./app/layout/ScrollToTop";
 import dateFnsLocalizer from 'react-widgets-date-fns';
 
@@ -15,9 +14,7 @@ dateFnsLocalizer();
 
 export const history = createBrowserHistory();
 
-if (process.env.REACT_APP_MOCK_SERVER) {
-  makeServer();
-}
+
 
 ReactDOM.render(
   <Router history={history}>
