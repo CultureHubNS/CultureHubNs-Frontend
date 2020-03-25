@@ -25,7 +25,7 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({
   }, [loadActivity, match.params.id, history]);
 
   if (loadingInitial || !activity)
-    return <LoadingComponent content="Loading activity..." />;
+    return <LoadingComponent content="Loading event..." />;
 
   if (!activity) return <h2>Event not found</h2>;
 

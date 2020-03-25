@@ -2,7 +2,6 @@ import React, { useState, FormEvent, useContext, useEffect } from "react";
 import { Segment, Form, Button, Grid } from "semantic-ui-react";
 import { ActivityFormValues } from "../../../app/models/activity";
 import { v4 as uuid } from "uuid";
-import ActivityStore from "../../../app/stores/activityStore";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router-dom";
 import { Form as FinalForm, Field } from "react-final-form";
@@ -98,12 +97,6 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
     }
   };
 
-  const handleInputChange = (
-    event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.currentTarget;
-    setActivity({ ...activity, [name]: value });
-  };
   return (
     <Grid>
       <Grid.Column width={10}>

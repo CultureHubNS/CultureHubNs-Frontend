@@ -1,12 +1,10 @@
-import { observable, action, computed, configure, runInAction } from "mobx";
-import { createContext, SyntheticEvent } from "react";
+import { observable, action, computed, runInAction } from "mobx";
+import { SyntheticEvent } from "react";
 import { IActivity } from "../models/activity";
 import agent from "../api/agent";
 import { history } from "../..";
 import { toast } from "react-toastify";
 import { RootStore } from "./rootStore";
-
-configure({ enforceActions: "always" });
 
 export default class ActivityStore {
   rootStore: RootStore;
@@ -45,7 +43,7 @@ export default class ActivityStore {
     this.loadingInitial = true;
     try {
       const activities = await agent.Activities.list();
-      runInAction("loading activities", () => {
+      runInAction("loading events", () => {
         activities.forEach(activity => {
           activity.date = new Date(activity.date);
           this.activityRegistry.set(activity.id, activity);
@@ -53,7 +51,7 @@ export default class ActivityStore {
         this.loadingInitial = false;
       });
     } catch (error) {
-      runInAction("load activities error", () => {
+      runInAction("load events error", () => {
         this.loadingInitial = false;
       });
       console.log(error);
