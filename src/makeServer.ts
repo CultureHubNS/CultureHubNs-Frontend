@@ -8,7 +8,7 @@ const activities: IActivity[] = [
     title: "Čalabrc fest",
     description: "Sajam dobre hrane",
     category: "food",
-    date: "2020-05-01T20:20:00.12536",
+    date: new Date("2020-05-01T20:20:00.12536"),
     city: "Novi Sad",
     venue: "Riblja pijaca"
   },
@@ -17,7 +17,7 @@ const activities: IActivity[] = [
     title: "Abba tribute",
     description: "Abba tribute band perfomance",
     category: "music",
-    date: "2020-02-03T21:15:00.54867",
+    date: new Date("2020-02-03T21:15:00.54867"),
     city: "Novi Sad",
     venue: "Gerilla bar"
   }
