@@ -61,11 +61,11 @@ const ProfileEvents = () => {
             {userActivities.map((activity: IUserActivity) => (
               <Card
                 as={Link}
-                to={`/activities/${activity.id}`}
+                to={`/events/${activity.id}`}
                 key={activity.id}
               >
                 <Image
-                  src={`/assets/categoryImages/${activity.category}.jpg`}
+                  src={`/assets/categoryImages/${activity.category}.jpeg`}
                   style={{ minHeight: 100, objectFit: 'cover' }}
                 />
                 <Card.Content>
