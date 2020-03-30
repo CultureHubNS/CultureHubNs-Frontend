@@ -28,7 +28,7 @@ const validate = combineValidators({
   description: composeValidators(
     isRequired("Description"),
     hasLengthGreaterThan(4)({
-      message: "Descriptin needs to be at least 5 characters"
+      message: "Description needs to be at least 5 characters"
     })
   )(),
   city: isRequired("City"),
@@ -63,23 +63,6 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
         .finally(() => setLoading(false));
     }
   }, [loadActivity, match.params.id]);
-
-  // const handleSubmit = () => {
-  //   if (activity.id.length === 0) {
-  //     let newActivity = {
-  //       ...activity,
-  //       id: uuid()
-  //     };
-
-  //     createActivity(newActivity).then(() => {
-  //       history.push(`/events/${newActivity.id}`);
-  //     });
-  //   } else {
-  //     editActivity(activity).then(() => {
-  //       history.push(`/events/${activity.id}`);
-  //     });
-  //   }
-  // };
 
   const handlerFinalFormSubmit = (values: any) => {
     const dateAndTime = combineDateAndTime(values.date, values.time);

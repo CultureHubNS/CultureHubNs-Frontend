@@ -12,7 +12,7 @@ export default class UserStore {
   }
 
   @observable user: IUser | null = null;
-  
+
   @computed get isLoggedIn() {
     return !!this.user;
   }
@@ -35,9 +35,12 @@ export default class UserStore {
   @action register = async (values: IUserFormValues) => {
     try {
       const user = await agent.User.register(values);
-      this.rootStore.commonStore.setToken(user.token);
-      this.rootStore.modalStore.closeModal();
-      history.push("/events");
+      runInAction(() => {
+        this.user = user;
+        this.rootStore.commonStore.setToken(user.token);
+        this.rootStore.modalStore.closeModal();
+        history.push("/events");
+      });
     } catch (error) {
       throw error;
     }
